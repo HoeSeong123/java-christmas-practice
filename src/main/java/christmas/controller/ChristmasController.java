@@ -28,7 +28,8 @@ public class ChristmasController {
         int afterDiscountAmount = Calculator.calculateAfterDiscountAmount(totalPrice,
                 EventRepository.getAppliedEvents());
         OutputView.printAfterDiscountAmount(afterDiscountAmount);
-
+        String badge = EventChecker.checkEventBadge(totalBenefitAmount);
+        OutputView.printEventBadge(badge);
 
     }
 
