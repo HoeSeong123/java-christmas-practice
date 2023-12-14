@@ -18,10 +18,12 @@ public class ChristmasController {
         OutputView.printOrderMenus(orderMenus);
         int totalPrice = Calculator.calculateTotalPrice(orderMenus);
         OutputView.printTotalPrice(totalPrice);
-        EventChecker.findEvents(visitDate, orderMenus);
-        OutputView.printAppliedEvents(EventRepository.getAppliedEvents());
+        if (totalPrice >= 10_000) {
+            EventChecker.findEvents(visitDate, orderMenus);
+        }
+        OutputView.printEvents(EventRepository.getAppliedEvents());
         int totalBenefitAmount = Calculator.calculateTotalBenefitAmount(EventRepository.getAppliedEvents());
-        
+
     }
 
     private OrderMenus readOrderMenus() {

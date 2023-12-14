@@ -28,14 +28,12 @@ public class OutputView {
         System.out.println(String.format("%,d원", totalPrice));
     }
 
-    public static void printAppliedEvents(Map<Event, Integer> appliedEvents) {
+    public static void printEvents(Map<Event, Integer> appliedEvents) {
         System.out.println(NEW_LINE.get() + "<증정 메뉴>");
         System.out.println(printPromotionEvent(appliedEvents));
 
         System.out.println(NEW_LINE.get() + "<혜택 내역>");
-        for (Event event : appliedEvents.keySet()) {
-            System.out.println(String.format("%s: -%,d원", event.getName(), appliedEvents.get(event)));
-        }
+        System.out.println(printAppliedEvents(appliedEvents));
     }
 
     private static String printPromotionEvent(Map<Event, Integer> appliedEvents) {
@@ -44,5 +42,17 @@ public class OutputView {
         }
 
         return "없음";
+    }
+
+    private static String printAppliedEvents(Map<Event, Integer> appliedEvents) {
+        if (appliedEvents.isEmpty()) {
+            return "없음";
+        }
+        StringBuilder sb = new StringBuilder();
+        for (Event event : appliedEvents.keySet()) {
+            sb.append(String.format("%s: -%,d원", event.getName(), appliedEvents.get(event)) + NEW_LINE.get());
+        }
+
+        return sb.toString();
     }
 }
