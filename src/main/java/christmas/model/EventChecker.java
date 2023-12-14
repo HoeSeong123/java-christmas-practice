@@ -1,6 +1,7 @@
 package christmas.model;
 
 import static christmas.model.Event.CHRISTMAS_D_DAY_DISCOUNT;
+import static christmas.model.Event.PROMOTION_EVENT;
 import static christmas.model.Event.SPECIAL_DISCOUNT;
 import static christmas.model.Event.WEEKDAY_DISCOUNT;
 import static christmas.model.Event.WEEKEND_DISCOUNT;
@@ -9,12 +10,13 @@ import christmas.repository.EventRepository;
 import java.time.LocalDate;
 import java.util.List;
 
-public class EventPlanner {
+public class EventChecker {
     public static void findEvents(int visitDate, OrderMenus orderMenus) {
         checkChristmasEvent(visitDate);
         checkWeekdayEvent(visitDate, orderMenus);
         checkWeekendEvent(visitDate, orderMenus);
         checkSpecialEvent(visitDate);
+        checkPromotionEvent(orderMenus);
     }
 
     private static void checkChristmasEvent(int visitDate) {
@@ -39,6 +41,12 @@ public class EventPlanner {
         List<Integer> specialDate = List.of(3, 10, 17, 24, 25, 31);
         if (specialDate.contains(visitDate)) {
             EventRepository.addEvent(SPECIAL_DISCOUNT, 1000);
+        }
+    }
+
+    private static void checkPromotionEvent(OrderMenus orderMenus) {
+        if (Calculator.calculateTotalPrice(orderMenus) >= 120_000) {
+            EventRepository.addEvent(PROMOTION_EVENT, 25_000);
         }
     }
 }
