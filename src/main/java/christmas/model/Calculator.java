@@ -1,5 +1,7 @@
 package christmas.model;
 
+import static christmas.model.Event.PROMOTION_EVENT;
+
 import java.util.Map;
 
 public class Calculator {
@@ -14,5 +16,14 @@ public class Calculator {
         }
 
         return total;
+    }
+
+    public static int calculateAfterDiscountAmount(int totalPrice, Map<Event, Integer> appliedEvents) {
+        totalPrice -= calculateTotalBenefitAmount(appliedEvents);
+        if (appliedEvents.containsKey(PROMOTION_EVENT)) {
+            totalPrice += 25_000;
+        }
+
+        return totalPrice;
     }
 }

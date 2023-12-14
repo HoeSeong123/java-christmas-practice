@@ -55,4 +55,14 @@ public class OutputView {
 
         return sb.toString();
     }
+
+    public static void printTotalBenefitAmount(int totalBenefitAmount) {
+        System.out.println("<총혜택 금액>");
+        System.out.printf("-%,d원" + NEW_LINE.get(), totalBenefitAmount);
+    }
+
+    public static void printAfterDiscountAmount(int afterDiscountAmount) {
+        System.out.println(NEW_LINE.get() + "<할인 후 예상 결제 금액>");
+        System.out.println(String.format("%,d원", afterDiscountAmount));
+    }
 }

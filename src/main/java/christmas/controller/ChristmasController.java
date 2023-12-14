@@ -23,6 +23,12 @@ public class ChristmasController {
         }
         OutputView.printEvents(EventRepository.getAppliedEvents());
         int totalBenefitAmount = Calculator.calculateTotalBenefitAmount(EventRepository.getAppliedEvents());
+        OutputView.printTotalBenefitAmount(totalBenefitAmount);
+
+        int afterDiscountAmount = Calculator.calculateAfterDiscountAmount(totalPrice,
+                EventRepository.getAppliedEvents());
+        OutputView.printAfterDiscountAmount(afterDiscountAmount);
+
 
     }
 
