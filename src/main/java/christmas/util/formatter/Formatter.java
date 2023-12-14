@@ -1,4 +1,4 @@
-package christmas.view.formatter;
+package christmas.util.formatter;
 
 import static christmas.util.message.GlobalMessage.COMMA;
 import static christmas.util.message.GlobalMessage.HYPHEN;
@@ -6,7 +6,7 @@ import static christmas.util.message.GlobalMessage.HYPHEN;
 import java.util.HashMap;
 import java.util.Map;
 
-public class InputFormatter {
+public class Formatter {
     public static Map<String, Integer> formatOrderMenus(String input) {
         Map<String, Integer> orderMenus = new HashMap<>();
         String[] splitByComma = input.split(COMMA.get());

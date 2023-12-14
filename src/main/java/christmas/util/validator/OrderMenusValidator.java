@@ -1,10 +1,13 @@
 package christmas.util.validator;
 
+import static christmas.util.message.ExceptionMessage.INVALID_DUPLICATE_MENU;
 import static christmas.util.message.ExceptionMessage.INVALID_ORDER_MENU_FORM;
 import static christmas.util.message.GlobalMessage.COMMA;
 
+import christmas.util.formatter.Formatter;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 public class OrderMenusValidator {
@@ -15,6 +18,7 @@ public class OrderMenusValidator {
         Validator.validateStartSubstring(COMMA.get(), input);
         List<String> splitByDelimiter = Arrays.stream(input.split(COMMA.get())).toList();
         validateForms(splitByDelimiter);
+        validateDuplicate(input, splitByDelimiter);
     }
 
     private static void validateForms(List<String> input) {
@@ -30,5 +34,13 @@ public class OrderMenusValidator {
         }
     }
 
+    private static void validateDuplicate(String input, List<String> splitByDelimiter) {
+        Map<String, Integer> menus = Formatter.formatOrderMenus(input);
+
+        if (splitByDelimiter.size() != menus.size()) {
+            throw new IllegalArgumentException(INVALID_DUPLICATE_MENU.get());
+        }
+
+    }
 }
 

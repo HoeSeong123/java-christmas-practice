@@ -1,9 +1,9 @@
 package christmas.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import christmas.util.formatter.Formatter;
 import christmas.util.validator.OrderMenusValidator;
 import christmas.util.validator.VisitDateValidator;
-import christmas.view.formatter.InputFormatter;
 import java.util.Map;
 
 public class InputView {
@@ -20,6 +20,6 @@ public class InputView {
         String input = Console.readLine();
         OrderMenusValidator.validate(input);
 
-        return InputFormatter.formatOrderMenus(input);
+        return Formatter.formatOrderMenus(input);
     }
 }

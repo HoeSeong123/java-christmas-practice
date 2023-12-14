@@ -14,9 +14,13 @@ public class OrderMenus {
 
     private void validate(Map<String, Integer> orderMenus) {
         for (String menu : orderMenus.keySet()) {
-            if (!Menu.containMenu(menu)) {
-                throw new IllegalArgumentException(INVALID_MENU.get());
-            }
+            validateValidMenu(menu);
+        }
+    }
+
+    private void validateValidMenu(String menu) {
+        if (!Menu.containMenu(menu)) {
+            throw new IllegalArgumentException(INVALID_MENU.get());
         }
     }
 }

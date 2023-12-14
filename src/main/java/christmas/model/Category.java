@@ -1,14 +1,29 @@
 package christmas.model;
 
+import static christmas.model.Menu.BARBEQUE_RIBS;
+import static christmas.model.Menu.CAESAR_SALAD;
+import static christmas.model.Menu.CHAMPAGNE;
+import static christmas.model.Menu.CHOCOLATE_CAKE;
+import static christmas.model.Menu.CHRISTMAS_PASTA;
+import static christmas.model.Menu.ICE_CREAM;
+import static christmas.model.Menu.MUSHROOM_SOUP;
+import static christmas.model.Menu.RED_WINE;
+import static christmas.model.Menu.SEAFOOD_PASTA;
+import static christmas.model.Menu.TAPAS;
+import static christmas.model.Menu.T_BONE_STEAK;
+import static christmas.model.Menu.ZERO_COLA;
+
+import java.util.List;
+
 public enum Category {
-    APPETIZER("src/main/java/resources/appetizer-menu.md"),
-    MAIN("src/main/java/resources/main-menu.md"),
-    DESSERT("src/main/java/resources/dessert-menu.md"),
-    BEVERAGE("src/main/java/resources/beverage-menu.md");
+    APPETIZER(List.of(MUSHROOM_SOUP, TAPAS, CAESAR_SALAD)),
+    MAIN(List.of(T_BONE_STEAK, BARBEQUE_RIBS, SEAFOOD_PASTA, CHRISTMAS_PASTA)),
+    DESSERT(List.of(CHOCOLATE_CAKE, ICE_CREAM)),
+    BEVERAGE(List.of(ZERO_COLA, RED_WINE, CHAMPAGNE));
 
-    private String path;
+    private List<Menu> menus;
 
-    Category(String path) {
-        this.path = path;
+    Category(List<Menu> menus) {
+        this.menus = menus;
     }
 }
