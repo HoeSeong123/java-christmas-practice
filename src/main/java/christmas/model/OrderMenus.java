@@ -68,4 +68,8 @@ public class OrderMenus {
             throw new IllegalArgumentException(INVALID_MENU.get());
         }
     }
+
+    public int calculateWeekdayEvent() {
+        return 2023 * Category.countDessertItems(orderMenus);
+    }
 }
