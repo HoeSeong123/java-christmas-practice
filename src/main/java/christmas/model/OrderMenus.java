@@ -5,6 +5,7 @@ import static christmas.util.message.ExceptionMessage.INVALID_ONLY_BEVERAGE;
 import static christmas.util.message.ExceptionMessage.INVALID_ORDER_COUNT;
 import static christmas.util.message.ExceptionMessage.INVALID_ZERO_ORDER;
 
+import java.util.Collections;
 import java.util.Map;
 
 public class OrderMenus {
@@ -13,6 +14,10 @@ public class OrderMenus {
     public OrderMenus(Map<String, Integer> orderMenus) {
         validate(orderMenus);
         this.orderMenus = orderMenus;
+    }
+
+    public Map<String, Integer> getOrderMenus() {
+        return Collections.unmodifiableMap(orderMenus);
     }
 
     private void validate(Map<String, Integer> orderMenus) {

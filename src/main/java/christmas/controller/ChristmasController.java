@@ -12,6 +12,7 @@ public class ChristmasController {
         OutputView.printStartMessage();
         int visitDate = read(InputView::readVisitDate);
         OrderMenus orderMenus = read(this::readOrderMenus);
+        OutputView.printOrderMenus(orderMenus);
     }
 
     private OrderMenus readOrderMenus() {
