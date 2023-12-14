@@ -65,4 +65,9 @@ public class OutputView {
         System.out.println(NEW_LINE.get() + "<할인 후 예상 결제 금액>");
         System.out.println(String.format("%,d원", afterDiscountAmount));
     }
+
+    public static void printEventBadge(String badge) {
+        System.out.println(NEW_LINE.get() + "<12월 이벤트 배지>");
+        System.out.println(badge);
+    }
 }

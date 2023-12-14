@@ -49,4 +49,18 @@ public class EventChecker {
             EventRepository.addEvent(PROMOTION_EVENT, 25_000);
         }
     }
+
+    public static String checkEventBadge(int totalBenefitAmount) {
+        if (totalBenefitAmount >= 20_000) {
+            return "산타";
+        }
+        if (totalBenefitAmount >= 10_000) {
+            return "트리";
+        }
+        if (totalBenefitAmount >= 5_000) {
+            return "별";
+        }
+
+        return "없음";
+    }
 }
