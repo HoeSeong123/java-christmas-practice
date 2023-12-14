@@ -16,6 +16,7 @@ public class ChristmasController {
         OutputView.printOrderMenus(orderMenus);
         int totalPrice = Calculator.calculateTotalPrice(orderMenus);
         OutputView.printTotalPrice(totalPrice);
+
     }
 
     private OrderMenus readOrderMenus() {
