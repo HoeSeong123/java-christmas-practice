@@ -20,6 +20,15 @@ public class OrderMenus {
         return Collections.unmodifiableMap(orderMenus);
     }
 
+    public int calculateTotalPrice() {
+        int total = 0;
+        for (String menu : orderMenus.keySet()) {
+            total += Menu.getPriceByName(menu) * orderMenus.get(menu);
+        }
+
+        return total;
+    }
+
     private void validate(Map<String, Integer> orderMenus) {
         for (String menu : orderMenus.keySet()) {
             validateValidMenu(menu);

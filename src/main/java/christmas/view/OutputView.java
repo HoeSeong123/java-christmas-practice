@@ -20,4 +20,9 @@ public class OutputView {
             System.out.println(name + " " + orderMenus.getOrderMenus().get(name) + "개");
         }
     }
+
+    public static void printTotalPrice(int totalPrice) {
+        System.out.println(NEW_LINE.get() + "<할인 전 총주문 금액>");
+        System.out.println(String.format("%,d원", totalPrice));
+    }
 }

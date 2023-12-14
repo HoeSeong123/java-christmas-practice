@@ -1,5 +1,7 @@
 package christmas.model;
 
+import static christmas.util.message.ExceptionMessage.INVALID_MENU;
+
 import java.util.Arrays;
 
 public enum Menu {
@@ -28,8 +30,20 @@ public enum Menu {
         return name;
     }
 
+    public int getPrice() {
+        return price;
+    }
+
     public static boolean containMenu(String menuName) {
         return Arrays.stream(values())
                 .anyMatch(menu -> menu.getName().equals(menuName));
+    }
+
+    public static int getPriceByName(String name) {
+        return Arrays.stream(values())
+                .filter(menu -> menu.name.equals(name))
+                .findFirst()
+                .map(menu -> menu.price)
+                .orElseThrow(() -> new IllegalArgumentException(INVALID_MENU.get()));
     }
 }

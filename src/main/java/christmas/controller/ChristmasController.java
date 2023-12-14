@@ -2,6 +2,7 @@ package christmas.controller;
 
 import static christmas.util.RetryUtil.read;
 
+import christmas.model.Calculator;
 import christmas.model.OrderMenus;
 import christmas.view.InputView;
 import christmas.view.OutputView;
@@ -13,6 +14,8 @@ public class ChristmasController {
         int visitDate = read(InputView::readVisitDate);
         OrderMenus orderMenus = read(this::readOrderMenus);
         OutputView.printOrderMenus(orderMenus);
+        int totalPrice = Calculator.calculateTotalPrice(orderMenus);
+        OutputView.printTotalPrice(totalPrice);
     }
 
     private OrderMenus readOrderMenus() {
