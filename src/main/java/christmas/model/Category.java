@@ -14,7 +14,6 @@ import static christmas.model.Menu.T_BONE_STEAK;
 import static christmas.model.Menu.ZERO_COLA;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 public enum Category {
@@ -38,10 +37,13 @@ public enum Category {
                 BEVERAGE.getMenus().stream().anyMatch(menu -> menu.getName().contains(item)));
     }
 
-    public static int countDessertItems(Map<String, Integer> orderMenus) {
-        return (int) orderMenus.keySet().stream()
-                .filter(menuName -> DESSERT.getMenus().stream()
-                        .anyMatch(menu -> menu.getName().equals(menuName)))
-                .count();
+    public static boolean isDessertMenu(String menuName) {
+        return DESSERT.getMenus().stream()
+                .anyMatch(menu -> menu.getName().equals(menuName));
+    }
+
+    public static boolean isMainMenu(String menuName) {
+        return MAIN.getMenus().stream()
+                .anyMatch(menu -> menu.getName().equals(menuName));
     }
 }

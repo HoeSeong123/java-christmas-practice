@@ -3,7 +3,9 @@ package christmas.controller;
 import static christmas.util.RetryUtil.read;
 
 import christmas.model.Calculator;
+import christmas.model.EventPlanner;
 import christmas.model.OrderMenus;
+import christmas.repository.EventRepository;
 import christmas.view.InputView;
 import christmas.view.OutputView;
 import java.util.Map;
@@ -16,7 +18,8 @@ public class ChristmasController {
         OutputView.printOrderMenus(orderMenus);
         int totalPrice = Calculator.calculateTotalPrice(orderMenus);
         OutputView.printTotalPrice(totalPrice);
-
+        EventPlanner.findEvents(visitDate, orderMenus);
+        OutputView.printAppliedEvents(EventRepository.getAppliedEvents());
     }
 
     private OrderMenus readOrderMenus() {

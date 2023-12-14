@@ -1,6 +1,7 @@
 package christmas.repository;
 
 import christmas.model.Event;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,5 +10,9 @@ public class EventRepository {
 
     public static void addEvent(Event event, Integer amount) {
         appliedEvents.put(event, amount);
+    }
+
+    public static Map<Event, Integer> getAppliedEvents() {
+        return Collections.unmodifiableMap(appliedEvents);
     }
 }

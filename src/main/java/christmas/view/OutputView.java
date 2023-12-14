@@ -2,7 +2,9 @@ package christmas.view;
 
 import static christmas.util.message.GlobalMessage.NEW_LINE;
 
+import christmas.model.Event;
 import christmas.model.OrderMenus;
+import java.util.Map;
 
 public class OutputView {
     public static void printStartMessage() {
@@ -24,5 +26,12 @@ public class OutputView {
     public static void printTotalPrice(int totalPrice) {
         System.out.println(NEW_LINE.get() + "<할인 전 총주문 금액>");
         System.out.println(String.format("%,d원", totalPrice));
+    }
+
+    public static void printAppliedEvents(Map<Event, Integer> appliedEvents) {
+        System.out.println(NEW_LINE.get() + "<혜택 내역>");
+        for (Event event : appliedEvents.keySet()) {
+            System.out.println(String.format("%s: -%,d원", event.getName(), appliedEvents.get(event)));
+        }
     }
 }

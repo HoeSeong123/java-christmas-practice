@@ -70,6 +70,16 @@ public class OrderMenus {
     }
 
     public int calculateWeekdayEvent() {
-        return 2023 * Category.countDessertItems(orderMenus);
+        return orderMenus.entrySet().stream()
+                .filter(entry -> Category.isDessertMenu(entry.getKey()))
+                .mapToInt(entry -> entry.getValue() * 2023)
+                .sum();
+    }
+
+    public int calculateWeekendEvent() {
+        return orderMenus.entrySet().stream()
+                .filter(entry -> Category.isMainMenu(entry.getKey()))
+                .mapToInt(entry -> entry.getValue() * 2023)
+                .sum();
     }
 }
