@@ -29,9 +29,20 @@ public class OutputView {
     }
 
     public static void printAppliedEvents(Map<Event, Integer> appliedEvents) {
+        System.out.println(NEW_LINE.get() + "<증정 메뉴>");
+        System.out.println(printPromotionEvent(appliedEvents));
+
         System.out.println(NEW_LINE.get() + "<혜택 내역>");
         for (Event event : appliedEvents.keySet()) {
             System.out.println(String.format("%s: -%,d원", event.getName(), appliedEvents.get(event)));
         }
+    }
+
+    private static String printPromotionEvent(Map<Event, Integer> appliedEvents) {
+        if (appliedEvents.containsKey(Event.PROMOTION_EVENT)) {
+            return "샴페인 1개";
+        }
+
+        return "없음";
     }
 }

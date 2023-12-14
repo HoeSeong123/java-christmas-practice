@@ -20,6 +20,8 @@ public class ChristmasController {
         OutputView.printTotalPrice(totalPrice);
         EventChecker.findEvents(visitDate, orderMenus);
         OutputView.printAppliedEvents(EventRepository.getAppliedEvents());
+        int totalBenefitAmount = Calculator.calculateTotalBenefitAmount(EventRepository.getAppliedEvents());
+        
     }
 
     private OrderMenus readOrderMenus() {
