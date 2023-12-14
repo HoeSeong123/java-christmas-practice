@@ -37,21 +37,21 @@ public class Validator {
         }
     }
 
-    public static void validateDuplicateSubstring(String substring, String value, String target) {
+    public static void validateDuplicateSubstring(String substring, String value) {
         if (containsDuplicateSubstring(substring, value)) {
-            throw new IllegalArgumentException(String.format("%s에 구분자는 하나만 입력해주세요", target));
+            throw new IllegalArgumentException(String.format("구분자는 하나만 입력해주세요"));
         }
     }
 
-    public static void validateStartSubstring(String substring, String value, String target) {
+    public static void validateStartSubstring(String substring, String value) {
         if (value.startsWith(substring)) {
-            throw new IllegalArgumentException(String.format("%s은(는) 구분자로 시작할 수 없습니다.", target));
+            throw new IllegalArgumentException(String.format("구분자로 시작할 수 없습니다."));
         }
     }
 
-    public static void validateEndSubstring(String substring, String value, String target) {
+    public static void validateEndSubstring(String substring, String value) {
         if (value.endsWith(substring)) {
-            throw new IllegalArgumentException(String.format("%s은(는) 구분자로 끝날 수 없습니다.", target));
+            throw new IllegalArgumentException(String.format("구분자로 끝날 수 없습니다."));
         }
     }
 
