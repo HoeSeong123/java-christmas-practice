@@ -29,5 +29,6 @@ public class OrderMenusValidator {
             throw new IllegalArgumentException(INVALID_ORDER_MENU_FORM.get());
         }
     }
+
 }
 
