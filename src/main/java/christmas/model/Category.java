@@ -14,6 +14,7 @@ import static christmas.model.Menu.T_BONE_STEAK;
 import static christmas.model.Menu.ZERO_COLA;
 
 import java.util.List;
+import java.util.Set;
 
 public enum Category {
     APPETIZER(List.of(MUSHROOM_SOUP, TAPAS, CAESAR_SALAD)),
@@ -25,5 +26,14 @@ public enum Category {
 
     Category(List<Menu> menus) {
         this.menus = menus;
+    }
+
+    public List<Menu> getMenus() {
+        return menus;
+    }
+
+    public static boolean areOnlyBeverage(Set<String> items) {
+        return items.stream().allMatch(item ->
+                BEVERAGE.getMenus().stream().anyMatch(menu -> menu.getName().contains(item)));
     }
 }
