@@ -3,6 +3,7 @@ package christmas.model;
 import static christmas.util.message.ExceptionMessage.INVALID_MENU;
 import static christmas.util.message.ExceptionMessage.INVALID_ONLY_BEVERAGE;
 import static christmas.util.message.ExceptionMessage.INVALID_ORDER_COUNT;
+import static christmas.util.message.ExceptionMessage.INVALID_ZERO_ORDER;
 
 import java.util.Map;
 
@@ -19,7 +20,8 @@ public class OrderMenus {
             validateValidMenu(menu);
         }
         validateOnlyBeverage(orderMenus);
-        validateCount(orderMenus);
+        validateTotalCount(orderMenus);
+        validateZeroOrder(orderMenus);
     }
 
     private void validateOnlyBeverage(Map<String, Integer> orderMenus) {
@@ -28,13 +30,22 @@ public class OrderMenus {
         }
     }
 
-    private void validateCount(Map<String, Integer> orderMenus) {
+    private void validateTotalCount(Map<String, Integer> orderMenus) {
         int totalSum = orderMenus.values().stream()
                 .mapToInt(Integer::intValue)
                 .sum();
 
         if (totalSum > 20) {
             throw new IllegalArgumentException(INVALID_ORDER_COUNT.get());
+        }
+    }
+
+    private void validateZeroOrder(Map<String, Integer> orderMenus) {
+        boolean containsZero = orderMenus.values().stream()
+                .anyMatch(value -> value.equals(0));
+
+        if (containsZero) {
+            throw new IllegalArgumentException(INVALID_ZERO_ORDER.get());
         }
     }
 
